@@ -1,7 +1,9 @@
 from vpython import *
 import time
 
-f1 = gcurve()
+g1 = graph(title = 'kinematics', xtitle = 'time [s]', ytitle = 'x [m]',
+           width = 500, height = 250, fast = False)
+f1 = gcurve(color = color.blue)
 #the particle is at position 0 when t = 0
 x = 0
 t = 0
@@ -9,7 +11,7 @@ t = 0
 v = 0.45
 a = 0.8
 #set the increment that will be used to calculate position
-dt = 0.25
+dt = 0.01
 
 while t < 2.5:
     #increase the velocity by aceleration * time interval
