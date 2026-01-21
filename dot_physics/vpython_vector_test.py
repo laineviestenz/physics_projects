@@ -1,4 +1,5 @@
 from vpython import *
+
 A = vector(1, 3, -1)
 print(A)
 

@@ -13,10 +13,10 @@ dt = 0.1
 
 while t < 2.2:
     """find the position of the particle, using a numerical model with 0.25
-    second intervals"""
+    second intervals. Not <= due to binary errors?"""
     #time incremented by 0.25 seconds(dt)
     t += dt
     #position increased by d = v*dt
     x += v*dt
-print(t)    
-print(x)
+    print(t)    
+    print(x)
