@@ -3,7 +3,7 @@ import time
 """This is a model of two balls, one behind the other, with different masses,
 being thrown with an initial velocity, and representing objects of different 
 mass in a vacuum. This file models one as a funcition of velocity, and the
-other as a function of time."""
+other as a function of momentum."""
 
 #create the ground
 ground = box(pos=vector(0,0,0), size=vector(8,0.2,4), emissive=True)
