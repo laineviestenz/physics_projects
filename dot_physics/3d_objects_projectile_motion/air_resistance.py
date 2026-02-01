@@ -2,7 +2,9 @@ from vpython import *
 import time
 """This is a model of two balls, one behind the other, with different masses,
 being thrown with an initial velocity, and representing objects of different 
-mass in a vacuum. This file will be left alone, and updated in different files"""
+mass in a vacuum. This file models one as a funcition of velocity, and the
+other as a function of time."""
+
 #create the ground
 ground = box(pos=vector(0,0,0), size=vector(8,0.2,4), emissive=True)
 
@@ -21,7 +23,7 @@ t = 0
 dt = 0.01
 
 #find velocities
-ball1.velocity = v0*vector(cos(theta), sin(theta), 0)
+ball1.momentum = v0*vector(cos(theta), sin(theta), 0) * ball1.mass
 ball2.velocity = v0*vector(cos(theta), sin(theta), 0)
 
 #play animation
@@ -33,16 +35,13 @@ while ball1.pos.y >= ground.pos.y + ground.size.y/2 + ball1.radius:
     ball1.force = ball1.mass*g
     ball2.force = ball2.mass*g
     
-    #acceleration = force/mass
-    # ball1.acceleration = ball1.force/ball1.mass
-    # ball2.acceleration = ball2.force/ball2.mass
-    
     #determine the velocity by adding the product of acceleration and dt
-    ball1.velocity += g*dt
+    #ball1.velocity += g*dt
+    ball1.momentum += ball1.force * dt
     ball2.velocity += g*dt
 
     #determine the postition by adding the change in position to the last pos
-    ball1.pos = ball1.pos + ball1.velocity*dt
+    ball1.pos += ball1.momentum * dt / ball1.mass
     ball2.pos = ball2.pos + ball2.velocity*dt
 
     t = t + dt
