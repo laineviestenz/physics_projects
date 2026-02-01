@@ -11,14 +11,15 @@ ground = box(pos=vector(0,0,0), size=vector(8,0.2,4), emissive=True)
 #create the balls
 ball1 = sphere(pos=vector(-3.5,0.6,0.75), radius=0.5, color=color.yellow,
                make_trail = True, emissive=True)
-ball1.mass = 0.05
+ball1.mass = 1
 ball2 = sphere(pos=vector(-3.5,0.6,-0.75), radius=0.5, color=color.cyan,
                make_trail=True, emissive=True)
-ball2.mass = 0.05
+ball2.mass = 5
 
 #define physical constants and initial conditions
 g = vector(0,-9.8,0)
-v0 = 10
+ball1.v0 = 7
+ball2.v0 = 7
 theta = 40*pi/180
 t = 0
 dt = 0.01
@@ -27,8 +28,8 @@ c = 0.47
 ball1.area = pi * ball1.radius**2
 
 #find initial momentum
-ball1.momentum = v0*vector(cos(theta), sin(theta), 0) * ball1.mass
-ball2.momentum = v0*vector(cos(theta), sin(theta), 0) * ball2.mass
+ball1.momentum = ball1.v0*vector(cos(theta), sin(theta), 0) * ball1.mass
+ball2.momentum = ball2.v0*vector(cos(theta), sin(theta), 0) * ball2.mass
 
 #play animation
 while ball2.pos.y >= ground.pos.y + ground.size.y/2 + ball1.radius:
