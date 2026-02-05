@@ -3,6 +3,10 @@ import time
 """credit: DotPhysics | while I modified or changed most lessons from this video
 series, this is very similar, although not exactly, to the code he wrote"""
 
+"""edit notes: this should be turned into a class, but anything vpython dependent
+should be excluded or somehow separated so it doesnt have to initalize for pure
+python functions. the variables need to be moved into the functions"""
+
 def get_range(angle, v0, initial_position):
     """run until the ball reaches zero, and return the position(range of the ball)"""
     g = vector(0,-9.8,0)
