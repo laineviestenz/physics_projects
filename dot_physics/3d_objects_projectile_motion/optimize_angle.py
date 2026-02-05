@@ -21,11 +21,17 @@ def prange(ttheta, v0, r0):
 
 theta = 1*pi/180
 dtheta = 1*pi/180
-vstart = 7
+vstart = 8
+
+mrange = 0
+mangle = 0
 
 while theta < 89*pi/180:
-    trange = prange(theta, vstart, vector(0,8,0))
+    trange = prange(theta, vstart, vector(0,0,0))
+    if trange > mrange:
+        mrange = trange
+        mangle = theta
     f1.plot(theta*180/pi, trange)
     theta += dtheta
-
+print(str(mrange) + ' at ' + str(mangle*180/pi))
 time.sleep(10)
