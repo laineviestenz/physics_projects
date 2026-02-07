@@ -8,6 +8,7 @@ print("Enter positions and times, enter 'x' when finished")
 
 while True:
     pos = get_valid_position()
+    #the function returns none if x is typed, so the loop breaks if it returns None
     if pos == None:
         break
     else:
