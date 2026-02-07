@@ -11,13 +11,14 @@ while True:
     if pos == None:
         break
     else:
-        positions.append(float(pos))
+        positions.append(pos)
     
-    times.append(get_valid_time())
+    times.append(get_valid_time(times))
     
 plt.style.use('classic')
 fig, ax = plt.subplots()
 ax.set_xlabel('time [seconds]')
 ax.set_ylabel('position [stories]')
 ax.plot(times, positions)
+ax.set_ybound(lower = 0, upper=max(positions)*1.1)
 plt.show()
