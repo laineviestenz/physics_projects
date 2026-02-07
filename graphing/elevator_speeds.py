@@ -14,7 +14,7 @@ while run == True:
             run = False
             break
         if cknan(position) and ckempty(position) == True:
-            positions.append(position)
+            positions.append(float(position))
             break
         else:
             print('please enter a valid number')
@@ -24,12 +24,14 @@ while run == True:
     while True:
         time = input("Enter Time: ")
         if cknan(time) and ckempty(time) == True:
-            times.append(time)
+            times.append(float(time))
             break
         else:
             print('please enter a valid number')
 
 plt.style.use('classic')
 fig, ax = plt.subplots()
-ax.scatter(positions, times)
+ax.set_xlabel('time [seconds]')
+ax.set_ylabel('position [stories]')
+ax.plot(times, positions)
 plt.show()
