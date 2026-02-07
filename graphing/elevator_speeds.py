@@ -1,34 +1,20 @@
 import matplotlib.pyplot as plt
-from input_functions import check_nan as cknan
-from input_functions import check_empty as ckempty
+from input_functions import get_valid_position as get_valid_position
+from input_functions import get_valid_time as get_valid_time
 positions = []
 times = []
 
 print("Enter positions and times, enter 'x' when finished")
 
-run = True
-while run == True:
-    while True:
-        position = input("Enter Position: ")
-        if position == 'x':
-            run = False
-            break
-        if cknan(position) and ckempty(position) == True:
-            positions.append(float(position))
-            break
-        else:
-            print('please enter a valid number')
-    if run == False:
+while True:
+    pos = get_valid_position()
+    if pos == None:
         break
+    else:
+        positions.append(float(pos))
     
-    while True:
-        time = input("Enter Time: ")
-        if cknan(time) and ckempty(time) == True:
-            times.append(float(time))
-            break
-        else:
-            print('please enter a valid number')
-
+    times.append(float(get_valid_time(times)))
+    
 plt.style.use('classic')
 fig, ax = plt.subplots()
 ax.set_xlabel('time [seconds]')
