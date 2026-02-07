@@ -13,7 +13,7 @@ while True:
     else:
         positions.append(float(pos))
     
-    times.append(float(get_valid_time(times)))
+    times.append(get_valid_time())
     
 plt.style.use('classic')
 fig, ax = plt.subplots()

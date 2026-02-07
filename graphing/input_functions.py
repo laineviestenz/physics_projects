@@ -20,10 +20,10 @@ def get_valid_position():
         else:
             print('please enter a valid number')
 
-def get_valid_time(list):
+def get_valid_time():
     while True:
         time = input("Enter Time: ")
-        if check_nan(time) and check_empty(time) and time not in list:
+        if check_nan(time) and check_empty(time):
             return time
         else:
             print('please enter a valid number')
