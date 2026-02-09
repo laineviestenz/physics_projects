@@ -44,8 +44,18 @@ def get_best_angle(v0, initial_position, mass, radius):
             maxangle = theta
         theta += dtheta
     print(str(maxrange) + ' at ' + str(maxangle*180/pi))
+    return maxangle
 
+def plot_angle_by_velocity(max_velocity, initial_position = vector(0,0,0),
+                           mass = 0.05, radius = 0.2):
+    g1 = graph(xtitle = "velocity", ytitle = "best angle")
+    f1 = gcurve(color = color.blue)
+    velocity = 0
+    dv = 5
+    while velocity <= max_velocity:
+        best_angle = get_best_angle(velocity, initial_position, mass, radius)
+        f1.plot(velocity, best_angle*180/pi)
+        velocity += dv
 
-get_best_angle(12, vector(0,0,0), 0.05, 0.2)
-plot_best_angle(12, vector(0,0,0), 0.5, 0.2)
+plot_angle_by_velocity(100, mass=0.2, radius=0.02)
 time.sleep(10)
