@@ -4,14 +4,12 @@ import time
 def get_range(angle, v0, initial_position, mass, radius):
     """run until the ball reaches zero, and return the position(range of the ball)"""
     g = vector(0,-9.8,0)
-    mass = mass
-    radius = radius
     rho = 1.2
     cross_area = pi*radius**2
     drag_coef = 0.47
     momentum = mass*v0*vector(cos(angle), sin(angle), 0)
     dt = 0.001
-    position=initial_position
+    position=vector(initial_position.x, initial_position.y, initial_position.z)
     while position.y >= 0:
         force = mass*g - 0.5*rho*cross_area*drag_coef*mag(momentum/mass)**2*norm(momentum)
         momentum += force*dt
