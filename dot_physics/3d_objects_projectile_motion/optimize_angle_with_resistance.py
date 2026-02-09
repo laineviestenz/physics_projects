@@ -1,11 +1,11 @@
 from vpython import *
 import time
 
-def get_range(angle, v0, initial_position):
+def get_range(angle, v0, initial_position, mass, radius):
     """run until the ball reaches zero, and return the position(range of the ball)"""
     g = vector(0,-9.8,0)
-    mass = 0.05
-    radius = 0.2
+    mass = mass
+    radius = radius
     rho = 1.2
     cross_area = pi*radius**2
     drag_coef = 0.47
@@ -18,7 +18,7 @@ def get_range(angle, v0, initial_position):
         position += momentum*dt/mass
     return(position.x)
 
-def plot_best_angle(v0, initial_position):
+def plot_best_angle(v0, initial_position, mass, radius):
     #initialize the graph and curve
     g1 = graph(xtitle="theta", ytitle ="range")
     f1 = gcurve(color=color.blue)
@@ -26,11 +26,11 @@ def plot_best_angle(v0, initial_position):
     dtheta = 1*pi/180
 
     while theta < 89*pi/180:
-        trange = get_range(theta, v0, initial_position)
+        trange = get_range(theta, v0, initial_position, mass, radius)
         f1.plot(theta*180/pi, trange)
         theta += dtheta
 
-def get_best_angle(v0, initial_position):
+def get_best_angle(v0, initial_position, mass, radius):
     theta = 0*pi/180
     dtheta = 1*pi/180
 
@@ -38,7 +38,7 @@ def get_best_angle(v0, initial_position):
     maxangle = 0
 
     while theta < 89*pi/180:
-        trange = get_range(theta, v0, initial_position)
+        trange = get_range(theta, v0, initial_position, mass, radius)
         if trange > maxrange:
             maxrange = trange
             maxangle = theta
@@ -46,6 +46,6 @@ def get_best_angle(v0, initial_position):
     print(str(maxrange) + ' at ' + str(maxangle*180/pi))
 
 
-get_best_angle(12, vector(0,0,0))
-plot_best_angle(12, vector(0,0,0))
+get_best_angle(12, vector(0,0,0), 0.05, 0.2)
+plot_best_angle(12, vector(0,0,0), 0.5, 0.2)
 time.sleep(10)
