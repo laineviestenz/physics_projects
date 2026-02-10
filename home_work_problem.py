@@ -3,6 +3,7 @@ height of its flight is equal to its horizontal range R.
 a) what is the angle, theta, which the rock is thrown at? """
 
 import math
+import matplotlib.pyplot as plt
 
 def get_angle(vi, dtheta = 0.0001*math.pi/180):
     theta = 1*math.pi/180
@@ -16,4 +17,13 @@ def get_angle(vi, dtheta = 0.0001*math.pi/180):
             return theta*180/math.pi
         theta += dtheta
 
-print(get_angle(150))
+def graph_anglevspeed(maxvelocity, dv=0.5):
+    plt.style.use('classic')
+    fig, ax = plt.subplots()
+    vi = 1
+    while vi < maxvelocity:
+        ax.plot(vi, get_angle(vi))
+        vi += dv
+    plt.show()
+
+graph_anglevspeed(15)
