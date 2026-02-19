@@ -9,8 +9,18 @@ def get_range(theta, velocity_i, mass, radius, initial_position=np.array([0,0,0]
     cross_area = pi*radius**2
     rho = 1.2
     drag_coefficient = 0.47
-    momentum = mass*np.array([math.cos(theta), math.sin(theta), 0])
-    y = 1
-    while y > 0:
+    momentum = mass*velocity_i*np.array([math.cos(theta), math.sin(theta), 0])
+    position = initial_position
+    height = initial_position[1]
+    dt = 0.1
+    while height >= 0:
+        #calculate the net force vector using the quadratic drag formula
         Fnet = mass*gravity - 0.5*rho*cross_area*drag_coefficient*(np.linalg.norm(momentum/mass))**2*(momentum/np.linalg.norm(momentum))
+        #the change in momentum equals force times change in time
+        momentum = momentum + (Fnet * dt)
+        #P/m = velocity; distance = velocity*time
+        position = position + ((momentum/mass) * dt)
+        height = position[1]
+    return position[1]
 
+print(get_range(23, 10, 2, 0.02))
