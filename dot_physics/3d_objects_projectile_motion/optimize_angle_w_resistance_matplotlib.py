@@ -4,6 +4,8 @@ import numpy as np
 import math
 
 def get_range(theta, velocity_i, mass, radius, initial_position=np.array([0,0,0])):
+    """finds the distance an object travels (in the x direction), given an angle
+    and initial velocity"""
     gravity = np.array([0,-9.8,0])
     pi = math.pi
     cross_area = pi*radius**2
@@ -24,6 +26,7 @@ def get_range(theta, velocity_i, mass, radius, initial_position=np.array([0,0,0]
     return position[0]
 
 def get_best_angle(velocity_i, mass, radius, initial_position=np.array([0,0,0])):
+    """finds the angle that gives the furthest range"""
     angles = {}
     ranges = []
     i = 0
@@ -38,6 +41,7 @@ def get_best_angle(velocity_i, mass, radius, initial_position=np.array([0,0,0]))
     return best_angle
     
 def plot_best_angle(velocity_i, mass, radius, initial_position = np.array([0,0,0])):
+    """graphs range vs angle (visualizes the get_best_angle() function)"""
     fig, graph = plt.subplots()
     x = []
     y = []
@@ -51,6 +55,9 @@ def plot_best_angle(velocity_i, mass, radius, initial_position = np.array([0,0,0
     plt.show()
 
 def plot_angle_by_velocity(max_velocity, mass, radius, initial_position=np.array([0,0,0])):
+    """graphs the angle vs velocity. Notably, this returns a constant (+- the 
+    numerical error) and is pretty slow. But it essentially shows that the
+    best angle is independent of velocity."""
     fig, graph = plt.subplots()
     velocities = []
     angles = []
@@ -63,4 +70,4 @@ def plot_angle_by_velocity(max_velocity, mass, radius, initial_position=np.array
     graph.plot(velocities, angles)
     plt.show()
 
-plot_angle_by_velocity(15, 5, 0.2)
+plot_angle_by_velocity(14, 5, 0.2)
