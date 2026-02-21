@@ -23,3 +23,21 @@ def get_range(theta, velocity_i, mass, radius, initial_position=np.array([0,0,0]
         height = position[1]
     return position[0]
 
+def get_best_angle(velocity_i, mass, radius, initial_position=np.array([0,0,0])):
+    angles = {}
+    ranges = []
+    i = 0
+    dtheta = 0.1
+    while i < 90:
+        distance = float(get_range(i, velocity_i, mass, radius, initial_position))
+        angles[distance] = i
+        ranges.append(distance)
+        i += dtheta
+    max_range = max(ranges)
+    best_angle = angles[max_range]
+    return best_angle
+    
+def plot_best_angle(velocity_i, mass, radius, initial_position = np.array([0,0,0])):
+    pass
+
+print(get_best_angle(10, 5, 2))
