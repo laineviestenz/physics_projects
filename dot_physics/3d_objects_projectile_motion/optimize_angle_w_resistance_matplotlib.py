@@ -38,6 +38,16 @@ def get_best_angle(velocity_i, mass, radius, initial_position=np.array([0,0,0]))
     return best_angle
     
 def plot_best_angle(velocity_i, mass, radius, initial_position = np.array([0,0,0])):
-    pass
+    fig, graph = plt.subplots()
+    x = []
+    y = []
+    angle = 0.1
+    dtheta = 0.1
+    while angle < 90:
+        x.append(angle)
+        y.append(get_range(angle, velocity_i, mass, radius, initial_position))
+        angle += dtheta
+    graph.plot(x,y)
+    plt.show()
 
-print(get_best_angle(10, 5, 2))
+plot_best_angle(45,15,2)
