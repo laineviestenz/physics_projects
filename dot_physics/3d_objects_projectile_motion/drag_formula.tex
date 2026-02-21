@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage[margin = 1in]{geometry}
+\setlength{\parindent}{0pt}
+\title{Deriving Drag Force in Python Computable Terms}
+\date{}
+
+
+\begin{document}
+\maketitle
+\vspace{-2cm}
+\begin{center}
+    The goal is to convert the standard quadratic drag formula into terms that can be easily used in a python program, without having to separately update velocity 
+\end{center}
+
+The drag equation is:
+\begin{equation}
+    F_D = -\frac{1}{2} \rho ACv^2
+\end{equation}
+
+Where:
+
+\hspace{1cm}$F_D$ is the drag force
+
+\hspace{1cm}$\rho$ is the density of the fluid
+
+\hspace{1cm}$A$ is the cross sectional area
+
+\hspace{1cm}$C$ is the drag coefficient of the object
+
+\hspace{1cm}$v$ is the velocity
+
+\vspace{\baselineskip}
+
+Vectorizing:
+\begin{equation}
+    \vec{F_D} = -\frac{1}{2} \rho AC |\vec{v}|^2\hat{v}
+\end{equation}
+\vspace{\baselineskip}
+
+Substitution:
+
+\hspace{1cm}Knowing that
+\begin{equation}
+    v = \frac{P}{m}
+\end{equation}
+
+Where:
+
+\hspace{1cm}$P$ is the momentum
+    
+\hspace{1cm}$m$ is the mass
+    
+\hspace{1cm}$v$ is the velocity
+
+\begin{equation}
+    \vec{F_D} = \frac{1}{2} \rho AC \vec{\frac{|P|}{m}}^2 \hat{v}
+\end{equation}
+
+\vspace{\baselineskip}
+Because momentum and velocity are in the same direction
+($\vec{P}$ = m$\vec{v})$
+
+\begin{equation}
+    \vec{F_D} = -\frac{1}{2} \rho AC \vec{\frac{|P|}{m}}^2 \hat{P}
+\end{equation}
+
+\vspace{\baselineskip}
+
+We now have an equation for drag force that we can use without having to calculate velocity and momentum separately.
+
+
+\end{document}
