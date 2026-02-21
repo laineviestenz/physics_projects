@@ -55,5 +55,5 @@ def plot_angle_by_velocity(max_velocity, initial_position = vector(0,0,0),
         f1.plot(velocity, best_angle*180/pi)
         velocity += dv
 
-plot_angle_by_velocity(100, mass=0.2, radius=0.02)
+get_best_angle(10, vector(0,0,0), 5, 2)
 time.sleep(10)

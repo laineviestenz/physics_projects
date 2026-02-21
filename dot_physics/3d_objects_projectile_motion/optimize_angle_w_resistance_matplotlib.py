@@ -50,4 +50,17 @@ def plot_best_angle(velocity_i, mass, radius, initial_position = np.array([0,0,0
     graph.plot(x,y)
     plt.show()
 
-plot_best_angle(45,15,2)
+def plot_angle_by_velocity(max_velocity, mass, radius, initial_position=np.array([0,0,0])):
+    fig, graph = plt.subplots()
+    velocities = []
+    angles = []
+    velocity = 1
+    dvelocity = 1
+    while velocity <= max_velocity:
+        velocities.append(velocity)
+        angles.append(get_best_angle(velocity, mass, radius, initial_position))
+        velocity += dvelocity
+    graph.plot(velocities, angles)
+    plt.show()
+
+plot_angle_by_velocity(15, 5, 0.2)
