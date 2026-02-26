@@ -13,8 +13,7 @@ def genLegalMoves(x, y, board_size):
     pass
 
 def posToNodeId(row, column, board_size):
-    """I am a little unsure what this one does at the moment
-    I think it just gives each node a unique name"""
+    """Gives each square a unique name"""
     return (row*board_size) + column
 
 def legal_coordinate(x, board_size):
