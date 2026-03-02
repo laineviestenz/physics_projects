@@ -1,16 +1,21 @@
 """This is based off of Runestone Academy's problem solving wiht
 algorithms and data stuctures using python book, but I plan to make modifications
 and create it without using their libraries (which are specific to their textbook)"""
-
+#import the rewritten graph class from PythonDS
 from graph import Graph
+
 def knight_graph(board_size):
     """Turns the board size into a graph, and generates the possible legal
     moves based on a helper function genLegalMoves"""
     kt_graph = Graph()
     for row in range(board_size):
         for column in range(board_size):
-            node_id = posToNodeId(row, column, board_size)
-            newPositions = genLegalMoves(row, column, board_size)
+            current_location_id = posToNodeId(row, column, board_size)
+            new_positions = genLegalMoves(row, column, board_size)
+            for position in new_positions:
+                new_position_id = posToNodeId(position[0], position[1], board_size)
+                kt_graph.addEdge(current_location_id, new_position_id) #create path(edge) between the current position and the new postion for all possible moves)
+    return kt_graph                                   
 
 def genLegalMoves(x, y, board_size):
     """takes the position of the knight, and generates the possible moves. Needs
