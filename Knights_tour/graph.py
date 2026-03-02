@@ -19,3 +19,11 @@ class Graph:
             self.addVertex(origin)
         self.connectedTo[origin].append(end)
     
+    def getConnections(self):
+        return self.connectedTo.keys()
+    
+    def setColor(self, color):
+        self.color = color
+
+    def getColor(self):
+        return self.color

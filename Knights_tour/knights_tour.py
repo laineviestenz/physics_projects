@@ -1,4 +1,4 @@
-"""This is based off of Runestone Academy's problem solving wiht
+"""This is based off of Runestone Academy's problem solving with
 algorithms and data stuctures using python book, but I plan to make modifications
 and create it without using their libraries (which are specific to their textbook)"""
 #import the rewritten graph class from PythonDS
@@ -48,4 +48,20 @@ def knightTour(n, path, u, limit):
     path=list of previous verticies
     u=next vertex to explore
     limit= number of nodes in path"""
-    pass
+    u.setColor('grey')
+    path.append(u)
+    if n<limit:
+        nbrlist = list(u.getConnections())
+        i = 0
+        done = False
+        while i < len(nbrList) and not done:
+            if nbrList[i].getColor() == 'white':
+                done = knightTour(n+1, path, nbrList[i], limit)
+            i = i + 1
+        if not done:
+            path.pop()
+            u.setColor('white')
+    else:
+        done = True
+    return done
+
