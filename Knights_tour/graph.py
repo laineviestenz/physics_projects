@@ -6,6 +6,7 @@ class Graph:
         """create an empty dictionary that will hold 'point:[(x,y), (x1,y1)]'
         where point is any given node, and the listed objects are the points it
         connects to"""
+        self.vertices = {}
         self.connectedTo = {}
     
     def addVertex(self, point):
