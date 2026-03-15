@@ -12,16 +12,33 @@ class fraction():
         
         return fraction((new_numerator + other_numerator), common_denominator)
     
-    def simplify(self, other_fraction):
-        pass
+    def get_gcd(self):
+        """Assumes we have two fractions: a/m and b/n"""
+        """Euclid's algorithm courtesy PSwAaDSUP"""
+        m = self.denominator
+        n = self.numerator
+    
+        while m % n != 0: #while remainder not zero
+            old_m = m
+            old_n = n
 
+            m = old_n
+            n = old_m%old_n
+        return n
+
+    def simplify(self):
+        gcd = fraction.get_gcd(self)
+        new_numerator = self.numerator / gcd
+        new_denominator = self.denominator / gcd
+        return fraction(new_numerator, new_denominator)
+    
     def show(self):
         print(str(self.numerator) + '/' + str(self.denominator))
 
 a = fraction(3, 4)
 b = fraction(1, 8)
 
-fraction.show((a.add(b)))
+c = fraction.add(a, b)
+fraction.show(c)
 
-
-
+fraction.show(c.simplify())
