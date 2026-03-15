@@ -10,15 +10,18 @@ class fraction():
         other_numerator = self.denominator * other_fraction.numerator
         common_denominator = self.denominator * other_fraction.denominator
         
-        return ((new_numerator + other_numerator), common_denominator)
+        return fraction((new_numerator + other_numerator), common_denominator)
     
     def simplify(self, other_fraction):
         pass
 
+    def show(self):
+        print(str(self.numerator) + '/' + str(self.denominator))
+
 a = fraction(3, 4)
 b = fraction(1, 8)
 
-print(a.add(b))
+fraction.show((a.add(b)))
 
 
 
