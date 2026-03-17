@@ -13,7 +13,7 @@ class fraction():
         return fraction((new_numerator + other_numerator), common_denominator)
     
     def get_gcd(self):
-        """Assumes we have two fractions: a/m and b/n"""
+        """Assumes we have a fraction from the fraction class (n/m)"""
         """Euclid's algorithm courtesy PSwAaDSUP"""
         m = self.denominator
         n = self.numerator
