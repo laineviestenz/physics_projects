@@ -12,12 +12,15 @@ class Stack():
         return self.stack.pop()
     
     def peek(self):
+        "check but do not remove"
         return self.stack[-1]
     
     def is_empty(self):
-        return bool(self.stack)
+        "check if list is empty"
+        return not bool(self.stack)
     
     def size(self):
+        "return the size of the list"
         return len(self.stack)
     
 my_stack = Stack()
