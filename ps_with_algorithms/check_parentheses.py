@@ -12,12 +12,12 @@ def check_parentheses (string):
     for i in string:
         if i == '(':
             stack.push(i)
-        if i == '(':
+        elif i == ')':
             if not stack.is_empty():
-                stack.pop(i)
+                stack.pop()
             else:
                 return False
     return stack.is_empty()
 
-print(check_parentheses('(0)()())(())'))
+print(check_parentheses('()(())()()()()()'))
 
