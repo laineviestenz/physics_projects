@@ -7,19 +7,14 @@ a user interface that will convert latex or human readable text to python."""
 add check for negative integral"""
 
 "x**2+5x-3"
-def riemann(equation, lower_bound, upper_bound, precision):
+def riemann(function, lower_bound, upper_bound, precision):
     dx = precision
-    x = lower_bound
+    #assumes a center sum for now
+    x = lower_bound + (dx/2)
     total = 0
     while x < upper_bound:
-        total += 0
+        total += (eval(function)*dx)
         x += dx
+    return total
 
-def evaluate_function(function, value):
-    """Helper function that will evaluate the fucntion at the input"""
-    x = value
-    return function
-
-#this is good, the eval function will make this a lot easier
-x = 1
-print(eval('(x**2)+3*x-2'))
+print(riemann("x**2", 0, 1, 0.001))
