@@ -17,20 +17,18 @@ def check_symbols (string):
             stack.push(i)
         elif i in '}])':
             if not stack.is_empty():
-                stack.pop()
-            else:
-                return False
-        
-        elif i == '"' and stack.size() % 2 == 0:
-            stack.push(i)
-
-        
+                if matches(stack.peek(), i):
+                    stack.pop()
+                else:
+                    return False
+        else:
+            return False        
     return stack.is_empty()
 
 def matches(left_symbol, right_symbol):
-    left = "([{"
-    right = ")]}"
-    return left.index == right.index
+    left = ['(', '[', '{']
+    right = [')', ']', '}']
+    return left.index(left_symbol) == right.index(right_symbol)
 
-print(check_symbols('()(())()()()()()'))
+print(check_symbols('()(]'))
 
