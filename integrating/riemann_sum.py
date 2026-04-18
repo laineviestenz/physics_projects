@@ -5,16 +5,23 @@ a user interface that will convert latex or human readable text to python."""
 
 """notes:
 add check for negative integral"""
-
-"x**2+5x-3"
+import math
 def riemann(function, lower_bound, upper_bound, precision):
+    negative = 1
     dx = precision
+    #check reverse integral
+    if lower_bound > upper_bound:
+        i = lower_bound
+        lower_bound = upper_bound
+        upper_bound = i
+        negative = -1
+    
     #assumes a center sum for now
     x = lower_bound + (dx/2)
     total = 0
     while x < upper_bound:
         total += (eval(function)*dx)
         x += dx
-    return total
+    return total * negative
 
-print(riemann("x**2", 0, 1, 0.001))
+print(riemann("math.sin(x)**(x)", 0, 1, 0.001))
