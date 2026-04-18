@@ -3,25 +3,26 @@ integral of a function. The function will need to be input in the form of a
 valid python equation with y as a function of x, though it might be good to add
 a user interface that will convert latex or human readable text to python."""
 
-"""notes:
-add check for negative integral"""
 import math
-def riemann(function, lower_bound, upper_bound, precision):
+def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
     negative = 1
     dx = precision
     #check reverse integral
     if lower_bound > upper_bound:
-        i = lower_bound
-        lower_bound = upper_bound
-        upper_bound = i
+        lower_bound, upper_bound = upper_bound, lower_bound
         negative = -1
     
     #assumes a center sum for now
     x = lower_bound + (dx/2)
+    if type.lower() == 'left':
+        x = lower_bound
+    elif type.lower() == 'right':
+        x = lower_bound + dx
+    
     total = 0
-    while x < upper_bound:
+    while x <= upper_bound:
         total += (eval(function)*dx)
         x += dx
     return total * negative
 
-print(riemann("math.sin(x)**(x)", 0, 1, 0.001))
+print(riemann("x**2", 0, 10, 1, type='left'))
