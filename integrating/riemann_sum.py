@@ -19,7 +19,7 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
     elif type.lower() == 'right':
         x = lower_bound + dx
         total = 0
-        while x < upper_bound:
+        while x <= upper_bound:
             y = eval(function)*dx
             total += y
             print('right', x, (eval(function)*dx), total)
