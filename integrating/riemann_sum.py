@@ -18,11 +18,20 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
         x = lower_bound
     elif type.lower() == 'right':
         x = lower_bound + dx
+        total = 0
+        while x < upper_bound:
+            y = eval(function)*dx
+            total += y
+            print('right', x, (eval(function)*dx), total)
+            x += dx
+        return total * negative
     
     total = 0
-    while x <= upper_bound:
-        total += (eval(function)*dx)
+    while x < upper_bound and not type.lower() == 'right':
+        y = eval(function)*dx
+        total += y
+        print(x, (eval(function)*dx), total)
         x += dx
     return total * negative
 
-print(riemann("x**2", 0, 10, 1, type='left'))
+print(riemann("x**2", 0, 10, 1, type='right'))
