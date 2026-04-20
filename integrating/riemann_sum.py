@@ -53,10 +53,11 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
         for i in range (lower_bound+dx, upper_bound, dx):
             x=i
             d.append(eval(function))
-        
+            print(d)
         plt.plot(c,d)
-        for x in range(lower_bound, upper_bound, dx):
-            plt.bar(x, d[x], dx, align='edge')
+        for x in range(lower_bound + dx, upper_bound, dx):
+            print(x)
+            plt.bar(x-dx, d[x-1], dx, align='edge')
         plt.show()
     
 
@@ -69,7 +70,7 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
         #begin graphing function
         fig, ax = plt.subplots()
         c = [i for i in range(lower_bound, upper_bound, dx)]
-        d = [  ]
+        d = []
         
         for i in range (lower_bound, upper_bound, dx):
             x=i+0.5*dx
@@ -80,4 +81,4 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
             plt.bar(x, d[x], dx, align='center')
         plt.show()
 
-riemann("x+2", 0, 10, 1, type='right')
+riemann("x+2", 0, 10, 1, type='left')
