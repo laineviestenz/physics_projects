@@ -3,6 +3,9 @@ integral of a function. The function will need to be input in the form of a
 valid python equation with y as a function of x, though it might be good to add
 a user interface that will convert latex or human readable text to python."""
 
+"""There is a few bugs in the graphing and visualization part, first it only
+works when the lowerbound is zero because of the way that the list is indexed,
+and there is currently a bug that prevents it from running at all"""
 import math
 import matplotlib.pyplot as plt
 
@@ -41,18 +44,19 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
             total += eval(function)*dx
             x += dx
         print('the right sum is: ', total * negative)
+       
         #begin graphing function
         fig, ax = plt.subplots()
-        c = [i for i in range(lower_bound, upper_bound, dx)]
+        c = [i for i in range(lower_bound+dx, upper_bound, dx)]
         d = []
         
-        for i in range (lower_bound, upper_bound, dx):
+        for i in range (lower_bound+dx, upper_bound, dx):
             x=i
             d.append(eval(function))
         
         plt.plot(c,d)
-        for x in range(lower_bound, upper_bound-1):
-            plt.bar(x, d[x+1], dx, align='edge')
+        for x in range(lower_bound, upper_bound, dx):
+            plt.bar(x, d[x], dx, align='edge')
         plt.show()
     
 
@@ -76,4 +80,4 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
             plt.bar(x, d[x], dx, align='center')
         plt.show()
 
-riemann("x**2", 0, 10, 1, type='center')
+riemann("x+2", 0, 10, 1, type='right')
