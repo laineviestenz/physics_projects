@@ -4,34 +4,41 @@ valid python equation with y as a function of x, though it might be good to add
 a user interface that will convert latex or human readable text to python."""
 
 import math
+import matplotlib.pyplot as plt
+
 def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
-    negative = 1
     dx = precision
+    total = 0
+    negative = 1
     #check reverse integral
     if lower_bound > upper_bound:
         lower_bound, upper_bound = upper_bound, lower_bound
         negative = -1
-    
-    #assumes a center sum for now
-    x = lower_bound + (dx/2)
-    if type.lower() == 'left':
+
+    if type.lower() == 'left' or type.lower() == 'l':
         x = lower_bound
-    elif type.lower() == 'right':
+        while x <= upper_bound - dx:
+            total += eval(function)*dx
+            print('left', x, (eval(function)*dx), total)
+            x += dx
+        print('the left sum is: ', total * negative)
+    
+    elif type.lower() == 'right' or type.lower() == 'r':
         x = lower_bound + dx
-        total = 0
-        while x <= upper_bound:
-            y = eval(function)*dx
-            total += y
+        while x <= upper_bound - 1:
+            total += eval(function)*dx
             print('right', x, (eval(function)*dx), total)
             x += dx
-        return total * negative
+        print('the right sum is: ', total * negative)
     
-    total = 0
-    while x < upper_bound and not type.lower() == 'right':
-        y = eval(function)*dx
-        total += y
-        print(x, (eval(function)*dx), total)
-        x += dx
-    return total * negative
+    else:
+        x = lower_bound + (dx*0.5)
+        while x <= upper_bound - (dx*0.5):
+            total += eval(function)*dx
+            print('center', x, (eval(function)*dx), total)
+            x += dx
+        print('the center sum is: ', total * negative)
 
-print(riemann("x**2", 0, 10, 1, type='right'))
+riemann("x**2", 0, 10, 1, type='left')
+riemann("x**2", 0, 10, 1, type='center')
+riemann("x**2", 0, 10, 1, type='right')
