@@ -21,6 +21,19 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
             total += eval(function)*dx
             x += dx
         print('the left sum is: ', total * negative)
+        #begin graphing function
+        fig, ax = plt.subplots()
+        c = [i for i in range(lower_bound, upper_bound, dx)]
+        d = []
+        
+        for i in range (lower_bound, upper_bound, dx):
+            x=i
+            d.append(eval(function))
+        
+        plt.plot(c,d)
+        for x in range(lower_bound, upper_bound-1):
+            plt.bar(x, d[x], dx, align='edge')
+        plt.show()
     
     elif type.lower() == 'right' or type.lower() == 'r':
         x = lower_bound + dx
@@ -28,14 +41,39 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
             total += eval(function)*dx
             x += dx
         print('the right sum is: ', total * negative)
+        #begin graphing function
+        fig, ax = plt.subplots()
+        c = [i for i in range(lower_bound, upper_bound, dx)]
+        d = []
+        
+        for i in range (lower_bound, upper_bound, dx):
+            x=i
+            d.append(eval(function))
+        
+        plt.plot(c,d)
+        for x in range(lower_bound, upper_bound-1):
+            plt.bar(x, d[x+1], dx, align='edge')
+        plt.show()
     
+
     else:
         x = lower_bound + (dx*0.5)
         while x <= upper_bound - (dx*0.5):
             total += eval(function)*dx
             x += dx
         print('the center sum is: ', total * negative)
+        #begin graphing function
+        fig, ax = plt.subplots()
+        c = [i for i in range(lower_bound, upper_bound, dx)]
+        d = [  ]
+        
+        for i in range (lower_bound, upper_bound, dx):
+            x=i+0.5*dx
+            d.append(eval(function))
+        
+        plt.plot(c,d)
+        for x in range(lower_bound, upper_bound):
+            plt.bar(x, d[x], dx, align='center')
+        plt.show()
 
-riemann("x**2", 0, 10, 1, type='left')
 riemann("x**2", 0, 10, 1, type='center')
-riemann("x**2", 0, 10, 1, type='right')
