@@ -19,15 +19,13 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
         x = lower_bound
         while x <= upper_bound - dx:
             total += eval(function)*dx
-            print('left', x, (eval(function)*dx), total)
             x += dx
         print('the left sum is: ', total * negative)
     
     elif type.lower() == 'right' or type.lower() == 'r':
         x = lower_bound + dx
-        while x <= upper_bound - 1:
+        while x <= upper_bound:
             total += eval(function)*dx
-            print('right', x, (eval(function)*dx), total)
             x += dx
         print('the right sum is: ', total * negative)
     
@@ -35,7 +33,6 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
         x = lower_bound + (dx*0.5)
         while x <= upper_bound - (dx*0.5):
             total += eval(function)*dx
-            print('center', x, (eval(function)*dx), total)
             x += dx
         print('the center sum is: ', total * negative)
 
