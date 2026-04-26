@@ -24,11 +24,14 @@ def riemann(function, lower_bound, upper_bound, precision, type = 'center'):
             plt.bar(x, eval(function), dx, align = 'edge')
             total += dx * eval(function)
             x+=dx
+    print(total)
+
 #begin graphing function
     c = [i for i in range(lower_bound, upper_bound, dx)]
     d = []
+    off_by_one = upper_bound + dx
     
-    for i in range (lower_bound, upper_bound, dx):
+    for i in range (lower_bound, off_by_one, dx):
         x=i
         d.append(eval(function))
     plt.plot(c, d)
