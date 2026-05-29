@@ -11,18 +11,19 @@ def get_range (vi, phi, theta, dx=0.01):
     t=0
     #converts theta to radians IMPORTANT!!!
     theta = theta * math.pi/180
+    phi = phi * math.pi/180
     while height>=depth: #make while ball above ground
         #calculate how far the ball has traveled horizontally
         horizontal_distance = vi*math.cos(theta)*t
         #calculate the depth below the horizon at the horizontal distance
         depth = -1*horizontal_distance*math.tan(phi)
         #calculate the height of the ball
-        height = math.sin(theta) + (0.5 * -9.8 * t**2)
+        height = vi*math.sin(theta)*t + (0.5 * -9.8 * t**2)
         #increment time
         t += dx    
     return horizontal_distance
 
-def optimize_angle (vi, phi, dx=2):
+def optimize_angle (vi, phi, dx=0.1):
     theta = 0
     ranges = {}
     while theta < 90:
@@ -37,10 +38,6 @@ def optimize_angle (vi, phi, dx=2):
             max_range = value
             max_theta = key
 
-    print("The max range is: " + str(max_range) + " when theta = " + str(max_theta) + '.')
-    return ranges
+    print("The max range is: " + str(max_range) + " when theta = " + str(round(max_theta,2)) + '.')
 
-
-print(optimize_angle (10, 10))
-
-print(get_range(10,10,4))
+optimize_angle(12, 1)
