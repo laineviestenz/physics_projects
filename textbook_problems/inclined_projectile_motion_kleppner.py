@@ -20,4 +20,5 @@ def optimize_angle (dtheta=0.1):
     phi=10
     theta=0
     while theta < 90:
-        
+        pass
+
