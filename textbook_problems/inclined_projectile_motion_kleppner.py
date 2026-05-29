@@ -6,19 +6,20 @@ import math
 
 def get_range (vi, phi, theta, dx=0.01):
     height=0
-    x=0
+    horizontal_distance = 0
+    depth=0
+    t=0
     
-    while height > depth #make while ball above ground
-        #calculate the depth of the ground at a point
-        depth = -1*x*math.tan(phi)
+    while height >= depth: #make while ball above ground
+        #calculate how far the ball has traveled horizontally
+        horizontal_distance = vi*math.cos(theta)*t
+        #calculate the depth below the horizon at the horizontal distance
+        depth = -1*horizontal_distance*math.tan(phi)
         #calculate the height of the ball
-            #kinematic equation here
-        x += dx
-    return x
+        height = vi*math.sin(theta)*t - (0.5 * 9.8 * t**2)
+        print(horizontal_distance, depth, height)
+        #increment time
+        t += dx    
+    return t
 
-def optimize_angle (dtheta=0.1):
-    phi=10
-    theta=0
-    while theta < 90:
-        pass
-
+print(get_range(10, 10, 30))
