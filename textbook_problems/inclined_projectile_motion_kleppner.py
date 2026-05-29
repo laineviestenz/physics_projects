@@ -9,17 +9,17 @@ def get_range (vi, phi, theta, dx=0.01):
     horizontal_distance = 0
     depth=0
     t=0
-    
-    while height >= depth: #make while ball above ground
+    theta = theta * math.pi/180
+    while t<7: #make while ball above ground
         #calculate how far the ball has traveled horizontally
         horizontal_distance = vi*math.cos(theta)*t
         #calculate the depth below the horizon at the horizontal distance
         depth = -1*horizontal_distance*math.tan(phi)
         #calculate the height of the ball
-        height = vi*math.sin(theta)*t - (0.5 * 9.8 * t**2)
-        print(horizontal_distance, depth, height)
+        height = math.sin(theta) #+ (0.5 * -9.8 * t**2)
         #increment time
         t += dx    
-    return t
+
+    return horizontal_distance
 
 print(get_range(10, 10, 30))
