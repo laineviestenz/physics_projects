@@ -3,6 +3,7 @@ from the horizontal. What angle theta above the horizon should a ball be launche
 its range?"""
 
 import math
+import matplotlib.pyplot as plt
 
 def get_range (vi, phi, theta, dx=0.01):
     height=0
@@ -39,5 +40,20 @@ def optimize_angle (vi, phi, dx=0.1):
             max_theta = key
 
     print("The max range is: " + str(max_range) + " when theta = " + str(round(max_theta,2)) + '.')
+    return ranges
 
-optimize_angle(12, 1)
+def plot_angle_vs_range(vi, phi):
+    dictionary = optimize_angle(vi, phi)
+    x = []
+    y = []
+    for key in dictionary.keys():
+        x.append(key)
+    for value in dictionary.values():
+        y.append(value)
+
+    plt.plot(x,y)
+    plt.xlabel("Theta (degrees)")
+    plt.ylabel("Range(meters)")
+    plt.show()
+
+plot_angle_vs_range(12, 15)
