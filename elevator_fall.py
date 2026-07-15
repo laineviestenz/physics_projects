@@ -15,9 +15,20 @@ d = 3.7 #m above spring
 k = 0.15*10**6 #N/m
 F_friction = 4400 #N
 
-def get_impact_speed (m, d, F_friction, dx = 0.05):
-    initial_energy = m * 9.8 * d
-    v = math.sqrt((initial_energy + (F_friction * d)/ (0.5 * m)))
-    print (v)
+def get_gpe (m, d, k, F_friction):
+    pass
 
-get_impact_speed(m, d, F_friction)
+def get_ke (m, d, k, F_friction):
+    pass
+
+def convert_ke_to_velocity (m, d, k, F_friction):
+    pass
+
+def get_epe (m, d, k, F_friction):
+    pass
+
+def get_total_me (m, d, k, F_friction):
+    pass
+
+def create_graph (m, d, k, F_friction):
+    pass
