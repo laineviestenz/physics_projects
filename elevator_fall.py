@@ -11,24 +11,32 @@ motion.
 """
 import math
 m = 1800 #kg
-d = 3.7 #m above spring
+d_i = 3.7 #m above spring
 k = 0.15*10**6 #N/m
 F_friction = 4400 #N
+g = 9.8 #m/s^2
+v_i = 0
+x_i = 0
 
-def get_gpe (m, d, k, F_friction):
-    pass
+def get_gpe (m, d):
+    return (m * g * d)
 
-def get_ke (m, d, k, F_friction):
-    pass
+def get_ke (m, v):
+    return (0.5 * m * v**2)
 
 def convert_ke_to_velocity (m, d, k, F_friction):
     pass
 
-def get_epe (m, d, k, F_friction):
-    pass
-
-def get_total_me (m, d, k, F_friction):
-    pass
+def get_epe (m, x, k):
+    return (0.5 * k * x**2)
 
 def create_graph (m, d, k, F_friction):
     pass
+
+def get_total_energy (m, d, k, v, x):
+    """requires velocity and spring displacement to be calculated first"""
+    E = get_gpe(m, d) + get_ke(m, v) + get_epe(m, x, k)
+    print (E)
+
+#calculate the initial energy
+E_i = get_total_energy(m, d_i, k, v_i, x_i)
