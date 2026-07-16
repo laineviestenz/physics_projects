@@ -31,12 +31,20 @@ def get_epe (m, x, k):
     return (0.5 * k * x**2)
 
 def create_graph (m, d, k, F_friction):
+    """Create a graph with total energy, KE, EPE, GPE, and velocity"""
     pass
 
 def get_total_energy (m, d, k, v, x):
     """requires velocity and spring displacement to be calculated first"""
     E = get_gpe(m, d) + get_ke(m, v) + get_epe(m, x, k)
-    print (E)
+    return E
+
+def update_pos_vel(m, g, x_i, t):
+    #total energy = gpe + ke + epe
+    #
 
 #calculate the initial energy
 E_i = get_total_energy(m, d_i, k, v_i, x_i)
+
+
+
