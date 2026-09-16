@@ -10,12 +10,16 @@ print(R)
 x = ((1/4)-(1/(n**2)))
 y = (1/wavelength)
 
-
+fit_x = x.copy()
+#extend fit functions to x=0 and 0.3 past the last data point
+fit_x[0] = 0
+fit_x[-1] = x.max()+0.03
 
 m, b = np.polyfit(x, y, 1)
 
 plt.style.use("seaborn-v0_8")
 plt.scatter(x, y)
+plt.plot(fit_x, m*fit_x+b)
 plt.title("Hydrogen Spectrum Rydberg Constant")
 plt.ylabel(r"$\frac{1}{\lambda}$" + "(nm)", size=15)
 plt.xlabel(r"$\frac{1}{4} - \frac{1}{n^2}$")
