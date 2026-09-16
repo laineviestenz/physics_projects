@@ -7,8 +7,18 @@ n = np.arange(3,10,1)
 R = 1/(wavelength*(0.25-(1/n**2)))
 
 print(R)
-#x=n, y = 1/(R(0.25-(1/n**2)))
-plt.scatter(n, wavelength)
+x = ((1/4)-(1/(n**2)))
+y = (1/wavelength)
+
+
+
+m, b = np.polyfit(x, y, 1)
+
+plt.style.use("seaborn-v0_8")
+plt.scatter(x, y)
+plt.title("Hydrogen Spectrum Rydberg Constant")
 plt.ylabel(r"$\frac{1}{\lambda}$" + "(nm)", size=15)
 plt.xlabel(r"$\frac{1}{4} - \frac{1}{n^2}$")
+plt.xlim(0, right = None)
+plt.ylim(0, top = None)
 plt.show()
