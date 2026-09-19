@@ -19,6 +19,6 @@ plt.ylabel("Voltage (V) in Volts")
 plt.title("Internal Resistance and emf of Battery\nVoltage as a Fnction of Current and Applied Resistance")
 plt.xlim(0, right=None)
 plt.ylim(0, top=None)
-t = plt.text(0.1,2.1, "emf = " + str(round(b, 2)) + "\nr = " + str(round(1/m,2)),
+t = plt.text(0.1,2.1, "emf = " + str(round(b, 2)) + "\nr = " + str(abs(round(1/m,2))),
               size=15, bbox=dict(boxstyle="square,pad=0.3", fc = "white", ec="black"))
 plt.show()
