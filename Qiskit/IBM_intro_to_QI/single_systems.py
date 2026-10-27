@@ -1,3 +1,8 @@
+#############################################################
+#This File Has Been Moved to a Jupyter Notebook
+#######################################################
+
+
 from IPython.core.display_functions import display
 from qiskit import __version__
 import numpy as np
@@ -24,3 +29,7 @@ w = Statevector([1/3, 2/3])
 
 display(u.draw("text"))
 display(u.draw("latex_source"))
+
+"""check for valid quantum state vector (Euclidian norm = 1)"""
+display(u.is_valid())
+display(w.is_valid())
