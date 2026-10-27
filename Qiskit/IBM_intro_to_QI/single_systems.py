@@ -2,6 +2,7 @@ from IPython.core.display_functions import display
 from qiskit import __version__
 import numpy as np
 from qiskit.visualization import array_to_latex
+from qiskit.quantum_info import Statevector
 
 """Vector Math"""
 ket0 = np.array([[1], [0]])
@@ -16,3 +17,10 @@ print(M)
 
 """Matrix Multiplication"""
 print(f"M1@M2 = {M1@M2}")
+
+u = Statevector([1 / np.sqrt(2), 1 / np.sqrt(2)])
+v = Statevector([(1+2.0j) / 3, -2/3])
+w = Statevector([1/3, 2/3])
+
+display(u.draw("text"))
+display(u.draw("latex_source"))
